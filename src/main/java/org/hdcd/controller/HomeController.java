@@ -23,25 +23,4 @@ public class HomeController {
         return "ajaxHome";
     }
 
-    @GetMapping("/registerForm")
-    public String registerForm() {
-        return "registerForm";
-    }
-
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String home(Locale locale, Model model){
-        log.info("locale = {}", locale);
-        Date date = new Date();
-        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,DateFormat.LONG, locale);
-        String formattedDate = dateFormat.format(date);
-        log.info("formattedDate = {}", formattedDate);
-
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 M월 d일 (E) a h시 m분 s초");
-        String formattedNow = now.format(formatter);
-        model.addAttribute("serverTime", formattedNow);
-        model.addAttribute("testName", "테스트8");
-        
-        return "home";
-    }
 }
